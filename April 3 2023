@@ -1,0 +1,35 @@
+# #!/bin/bash
+
+# create the folder
+mkdir myFolder
+
+# navigate to the folder
+cd myFolder
+
+# create five files with 10MB of random data in each file
+for i in {1..5}
+do
+  dd if=/dev/urandom of=file$i bs=10M count=1
+done
+
+# output confirmation message
+echo "Folder and files created!"
+
+
+#!/bin/bash
+
+# check if the folder exists
+if [ -d "myFolder" ]
+then
+  # delete all files within the folder
+  rm -r myFolder/*
+
+  # delete the folder itself
+  rmdir myFolder
+
+  # output confirmation message
+  echo "Folder and files deleted successfully!"
+else
+  # output error message if the folder does not exist
+  echo "Folder does not exist"
+fi
